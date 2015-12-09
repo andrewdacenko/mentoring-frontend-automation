@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install": "bower install",
     "prestart": "gulp",
     "start": "node index.js",
     "test": "karma start --single-run",
