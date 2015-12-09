@@ -1,0 +1,37 @@
+language: node_js
+sudo: false
+
+node_js:
+- '0.12'
+- '4'
+- '5'
+
+env:
+  global:
+  - CXX=g++-4.8
+
+cache:
+  directories:
+  - node_modules
+  - vendors
+
+before_install:
+- npm config set loglevel warn
+- g++-4.8 --version
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+
+install:
+- du -sh ./node_modules ./vendors/ || true
+- npm install
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: JUAnaj6Ncc8NMjg5D7QzJQpn/2wF3bW1orgucq8+qdJ8e1MxJNOGyANeHsNMuCh3uwIz6oO4I7bLJvqeTQtS47quI8XAyHsERdc10bpGOUcXIku1jpr/1BqJ7blaxIfHldO8cB0ZNW5vGK91hqQOnSgGwVi6yHrxWrt+h1orfaIA3l2F9xveg4j+C4uwK/lkQ490s49MkJ1wefNON5oeQt4GqY7oTmLDffyCO/xjbmG1LszNmWfY0xvWODFVtRICNxiJoQ5gN/da00hJ3ikmER5CsnRbmVztEs0lx7JIee3S8fxhT3VqdG1koIND7fagnVoRwUmZRZv+BmsXJhNNFzlIrN5Hvl54ZsEslq+6GlDv37yXDwZ+HC3AjdOC9ezibS5IIaY4wtTOlpZLuOGgfWPdONPqFbHnzJl/A4BaRuSX0t+4ELW1FpzobP9sSiJF+huMLCvDMVQt3ykfqKnHQkWnHAznMWmtgefQoDxZFxtKLBHslecDxAmjh3nyGDC+VgFBl/b5+msFfHPN0vx0Mcu1P3IfsLY3VEHr+W8FiMEozb7nBnx/sbWVrV6su4b+UPy1OAxtviQfpus51C+BxYg9vHVo4AmtRoaZiCSKDWoN0LUJoX4eBGZhyatNBz6kTCUzzNm524eMNOakjsd8hYVALeRORbkqKJtzRcyjXz4=
+  app: mentoring-frontend-automation
