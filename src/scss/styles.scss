@@ -1,5 +1,46 @@
-$bgColor: red;
+@import 'mixins';
 
-.body {
-	color: $bgColor;
+body {
+	width: 100%;
+}
+
+$assetsWidth : 1200px;
+.assets {
+	width: $assetsWidth;
+	margin: 20px auto;
+}
+
+$assetMargin: 10px;
+$assetPadding: 10px;
+$assetTitleHeight: 40px;
+$assetWidth: $assetsWidth / 4 - 2 * $assetMargin - 2 * $assetPadding;
+$assetHeight: $assetWidth + $assetTitleHeight;
+$assetImageSize: $assetWidth;
+
+.asset {
+	width: $assetWidth;
+	max-width: $assetWidth;
+	height: $assetHeight;
+	max-height: $assetHeight;
+	background: #eee;
+	margin: $assetMargin;
+	padding: $assetPadding;
+	float: left;
+
+	&-container {
+		display: table-cell;
+		vertical-align: middle;
+		@include square-size($assetImageSize);
+	}
+
+	&-image {
+
+		@include max-size($assetImageSize);
+	}
+
+	&-title {
+		height: $assetTitleHeight;
+		text-align: center;
+		padding: 10px;
+	}
 }

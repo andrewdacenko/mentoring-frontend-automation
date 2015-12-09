@@ -36,6 +36,7 @@ gulp.task('js', ['vendors'], function() {
     ])
     .pipe(sourcemaps.init())
     .pipe(concat('app.js'))
+    .pipe(ngAnnotate())
     .pipe(uglify())
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('public'));
@@ -51,7 +52,9 @@ gulp.task('serve', ['default'], function() {
     server: './public'
   });
 
-  gulp.watch('app/scss/*.scss', ['sass']);
+  gulp.watch('src/html/*.html', ['html']);
+  gulp.watch('src/scss/*.scss', ['sass']);
+  gulp.watch('src/js/**/*.js', ['js']);
   gulp.watch('public/*.js', ['js-watch']);
   gulp.watch('public/*.html').on('change', browserSync.reload);
 });

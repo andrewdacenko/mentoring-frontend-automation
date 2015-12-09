@@ -1,0 +1,20 @@
+@mixin size($side) {
+	width: $side;
+	height: $side;	
+}
+
+@mixin min-size($side) {
+	min-width: $side;
+	min-height: $side;
+}
+
+@mixin max-size($side) {
+	max-width: $side;
+	max-height: $side;
+}
+
+@mixin square-size($side) {
+	@include size($side);
+	@include min-size($side);
+	@include max-size($side);
+}

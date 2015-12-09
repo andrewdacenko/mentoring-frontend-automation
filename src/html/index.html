@@ -5,7 +5,14 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body ng-controller="HomeController as home">
-  <div></div>
+  <div class="assets">
+    <div class="asset" ng-repeat="asset in home.assets">
+      <div class="asset-container">
+        <img class="asset-image" ng-src="{{asset.url}}">
+      </div>
+      <div class="asset-title">{{asset.title}}</div>
+    </div>
+  </div>
 
   <script src="vendors.js"></script>
   <script src="app.js"></script>
